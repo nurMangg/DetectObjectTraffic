@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Detection</title>
+    <title>YOLO Object Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin: 50px auto;
+            width: 80%;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .video-container {
+            position: relative;
+            display: inline-block;
+        }
+        .video-container img {
+            width: 100%;
+            border: 2px solid #343a40;
+        }
+        .count-container {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #343a40;
+        }
+        .count-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>YOLO Object Counter</h1>
+    <img src="{{ url_for('video_feed') }}" alt="Video Stream">
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin: 50px auto;
+            width: 80%;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .video-container {
+            position: relative;
+            display: inline-block;
+        }
+        .video-container img {
+            width: 100%;
+            border: 2px solid #343a40;
+        }
+        .count-container {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #343a40;
+        }
+        .count-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fruit Detection</h1>
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" alt="Video Stream">
+        </div>
+        <div class="count-container" id="count-container">
+            <div class="count-item">Orange: <span id="orange-count">{{ counts.Orange }}</span></div>
+            <div class="count-item">Pineapple: <span id="pineapple-count">{{ counts.Pineapple }}</span></div>
+            <div class="count-item">Strawberry: <span id="strawberry-count">{{ counts.Strawberry }}</span></div>
+            <div class="count-item">Dates: <span id="dates-count">{{ counts.Dates }}</span></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        var socket = io();
+        
+        socket.on('new_detection', function(data) {
+            document.getElementById('orange-count').textContent = data.counts.Orange;
+            document.getElementById('pineapple-count').textContent = data.counts.Pineapple;
+            document.getElementById('strawberry-count').textContent = data.counts.Strawberry;
+            document.getElementById('dates-count').textContent = data.counts.Dates;
+        });
+    </script>
+</body>
+</html>
