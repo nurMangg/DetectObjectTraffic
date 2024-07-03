@@ -11,7 +11,7 @@ import logging
 app = Flask(__name__)
 
 # Initialize the YOLO model
-model = YOLO("modelfruit.pt")
+model = YOLO("terbaru.pt")
 
 # Define region of interest (ROI)
 region_of_interest = [(300, 20), (302, 680), (280, 680), (280, 20)]
