@@ -1,0 +1,4 @@
+flask
+ultralytics=8.2.2
+opencv-python
+shapely
